@@ -1,0 +1,11 @@
+> NEI <- readRDS("exdata_data_NEI_data/summarySCC_PM25.rds")
+> SCC <- readRDS("exdata_data_NEI_data/Source_Classification_Code.rds")
+> us <- grepl("coal", SCC$Short.Name, ignore.case = TRUE)
+> View(us)
+> coalscc <- SCC[us, ]
+> View(coalscc)
+> mrg <- merge(NEI, coalscc, by = "SCC")
+> View(mrg)
+> totalpm <- tapply(mrg$Emissions, mrg$year, sum)
+> View(totalpm)
+> barplot(totalpm,  xlab = "Year", ylab = "Total Emission", main = "Total Emission from coal sources")

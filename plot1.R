@@ -1,0 +1,5 @@
+> NEI <- readRDS("exdata_data_NEI_data/summarySCC_PM25.rds")
+> SCC <- readRDS("exdata_data_NEI_data/Source_Classification_Code.rds")
+> emissionsyear <- tapply(NEI$Emissions, NEI$year)
+> emissionsyear <- tapply(NEI$Emissions, NEI$year, sum)
+> barplot(emissionsyear, xlab = "year", ylab = "total emission", main = "total emission per year")
